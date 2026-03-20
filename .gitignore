@@ -137,3 +137,33 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Python / ML
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+.pytest_cache/
+mlruns/
+*.onnx
+
+# React Native / Android
+android/
+ios/
+*.keystore
+*.jks
+
+# Environment & secrets
+.env
+.env.local
+.env.production
+*.pem
+secrets/
+
+# IDE
+.vscode/
+.idea/
+*.swp

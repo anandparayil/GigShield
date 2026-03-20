@@ -196,7 +196,7 @@ Maximum cap: **₹180/week** regardless of multipliers.
 | **8** | **Demand Collapse AI** | **Order density drops ≥ 50% below 4-week hourly baseline for 90+ min** | **Platform order-density feed + Z-Score / DBSCAN model** |
 | **9** | **Platform Outage** | **Zomato/Swiggy confirmed down > 2 hrs during active session** | **Platform status APIs + DownDetector + peer corroboration** |
 
-> **★ Triggers 8 and 9 are GigShield's original contributions.** Trigger 8 catches every disruption that official APIs miss — unofficial rallies, unmarked road closures, sudden zone blackouts — by monitoring what actually matters: are orders flowing to this worker right now? Trigger 9 addresses a uniquely digital risk that no existing product covers: a worker whose 100% of income depends on an app staying online.
+> **Triggers 8 and 9 are GigShield's original contributions.** Trigger 8 catches every disruption that official APIs miss — unofficial rallies, unmarked road closures, sudden zone blackouts — by monitoring what actually matters: are orders flowing to this worker right now? Trigger 9 addresses a uniquely digital risk that no existing product covers: a worker whose 100% of income depends on an app staying online.
 
 ---
 
@@ -286,7 +286,7 @@ Identifies workers at risk of cancelling before a disruption event reminds them 
 
 ## System Architecture
 
-![GigShield System Architecture](docs/arch_readme.png)
+![GigShield System Architecture](architecture_diagram.png)
 
 7 independent microservices on **AWS Mumbai (ap-south-1)**. Every service is stateless and horizontally scalable. The Trigger Engine has an independent **99.9% uptime SLA**. Kafka guarantees no trigger event is ever lost even if downstream services are temporarily unavailable.
 

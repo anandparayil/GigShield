@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | GigShield</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="app-page">
+  <div class="topbar">
+    <a class="brand-link" href="/"><div class="logo-dot"></div><span>GigShield</span></a>
+    <div class="topbar-actions">
+      <a href="/login">Worker login</a>
+      <a href="/admin-login">Admin</a>
+    </div>
+  </div>
+
+  <main class="page-grid">
+    <section class="panel">
+      <div class="section-head">
+        <h2>Create your worker account</h2>
+        <p>One mobile number. One password. Link all your gig platforms inside the same dashboard.</p>
+      </div>
+
+      <form id="registerForm" class="stack-form">
+        <div class="form-row">
+          <input type="text" id="fullName" placeholder="Full name" required>
+          <input type="text" id="phone" placeholder="Mobile number" required>
+        </div>
+        <div class="form-row">
+          <input type="password" id="password" placeholder="Create password" required>
+          <input type="text" id="city" placeholder="City" required>
+        </div>
+        <div class="form-row">
+          <input type="text" id="zone" placeholder="Work zone" required>
+          <input type="text" id="hours" placeholder="Preferred hours e.g. 7PM-11PM">
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-head">
+            <h3>Linked platform profiles</h3>
+            <button class="btn btn-secondary" type="button" id="addPlatformBtn">Add platform</button>
+          </div>
+          <div id="platformContainer"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary full">Create account</button>
+      </form>
+      <p id="registerMessage" class="form-message"></p>
+    </section>
+
+    <aside class="panel accent-panel">
+      <h3>How this works</h3>
+      <ul class="feature-list">
+        <li>Use your mobile number to login every time.</li>
+        <li>Link one or many platform profiles under one account.</li>
+        <li>Policies and claims live in the same dashboard.</li>
+        <li>Claims are generated once per phone number per trigger event.</li>
+      </ul>
+    </aside>
+  </main>
+
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/register.js"></script>
+</body>
+</html>

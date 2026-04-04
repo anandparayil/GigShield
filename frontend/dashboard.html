@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Dashboard | GigShield</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="app-page">
+  <div class="dashboard-shell">
+    <aside class="sidebar">
+      <div class="brand-link"><div class="logo-dot"></div><span>GigShield</span></div>
+      <button class="nav-item active" data-tab="overview">Overview</button>
+      <button class="nav-item" data-tab="policy">Policy</button>
+      <button class="nav-item" data-tab="platforms">Platforms</button>
+      <button class="nav-item" data-tab="claims">Claims</button>
+      <button class="nav-item" data-tab="notifications">Notifications</button>
+      <button class="nav-item" data-tab="profile">Profile</button>
+      <button class="nav-item danger" id="logoutBtn">Logout</button>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1 id="welcomeName">Welcome</h1>
+          <p id="welcomeMeta">Track your protection, claims and earnings from one place.</p>
+        </div>
+        <div class="badge-stack">
+          <span class="badge orange" id="badgeCity">City</span>
+          <span class="badge dark" id="badgeZone">Zone</span>
+        </div>
+      </header>
+
+      <section id="tab-overview" class="tab-panel active">
+        <div class="stats-grid">
+          <div class="metric-card"><small>Linked platforms</small><strong id="metricPlatforms">0</strong></div>
+          <div class="metric-card"><small>Current premium</small><strong id="metricPremium">₹0</strong></div>
+          <div class="metric-card"><small>Total claims</small><strong id="metricClaims">0</strong></div>
+          <div class="metric-card"><small>Total protected payout</small><strong id="metricPayout">₹0</strong></div>
+        </div>
+        <div class="content-grid">
+          <div class="panel">
+            <div class="section-head"><h2>Active policy</h2><p>Your current protection plan and weekly pricing.</p></div>
+            <div id="overviewPolicy"></div>
+          </div>
+          <div class="panel">
+            <div class="section-head"><h2>Recent claims</h2><p>Latest automatically generated protection claims.</p></div>
+            <div id="overviewClaims"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-policy" class="tab-panel">
+        <div class="panel">
+          <div class="section-head">
+            <h2>Policy management</h2>
+            <p>Select a weekly shield plan. Creating a new plan automatically pauses the previous one.</p>
+          </div>
+          <form id="policyForm" class="stack-form compact">
+            <select id="planName" required>
+              <option value="">Choose plan</option>
+              <option value="Basic">Basic Shield</option>
+              <option value="Plus">Plus Shield</option>
+              <option value="Max">Max Shield</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Activate policy</button>
+          </form>
+          <div id="policyResult"></div>
+        </div>
+      </section>
+
+      <section id="tab-platforms" class="tab-panel">
+        <div class="content-grid">
+          <div class="panel">
+            <div class="section-head"><h2>Linked platform profiles</h2><p>Use one mobile login but keep all worker codes flexible under the same account.</p></div>
+            <div id="platformList"></div>
+          </div>
+          <div class="panel">
+            <div class="section-head"><h2>Add or update a platform</h2><p>Attach Swiggy, Zomato, Rapido or Zepto to the same account.</p></div>
+            <form id="platformForm" class="stack-form compact">
+              <select id="platformName" required>
+                <option value="">Select platform</option>
+                <option value="Swiggy">Swiggy</option>
+                <option value="Zomato">Zomato</option>
+                <option value="Rapido">Rapido</option>
+                <option value="Zepto">Zepto</option>
+              </select>
+              <input type="text" id="platformWorkerCode" placeholder="Worker code" required>
+              <input type="number" id="platformTrips" placeholder="Trips completed" required>
+              <input type="number" id="platformEarning" placeholder="Average hourly earning" required>
+              <button type="submit" class="btn btn-primary">Save platform</button>
+            </form>
+            <p id="platformMessage" class="form-message"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-claims" class="tab-panel">
+        <div class="panel">
+          <div class="section-head"><h2>Claims dashboard</h2><p>Every disruption creates at most one claim per phone number for that event.</p></div>
+          <div id="claimsList"></div>
+        </div>
+      </section>
+
+      <section id="tab-notifications" class="tab-panel">
+        <div class="panel">
+          <div class="section-head"><h2>Notifications</h2><p>Policy activations, trigger alerts and payout updates.</p></div>
+          <div id="notificationList"></div>
+        </div>
+      </section>
+
+      <section id="tab-profile" class="tab-panel">
+        <div class="content-grid">
+          <div class="panel">
+            <div class="section-head"><h2>Profile</h2><p>Manage your base account details.</p></div>
+            <form id="profileForm" class="stack-form compact">
+              <input type="text" id="profileName" placeholder="Full name" required>
+              <input type="text" id="profilePhone" placeholder="Mobile number" disabled>
+              <input type="text" id="profileCity" placeholder="City" required>
+              <input type="text" id="profileZone" placeholder="Zone" required>
+              <input type="text" id="profileHours" placeholder="Preferred hours">
+              <button type="submit" class="btn btn-primary">Update profile</button>
+            </form>
+            <p id="profileMessage" class="form-message"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/user-dashboard.js"></script>
+</body>
+</html>

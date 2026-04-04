@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | GigShield</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="app-page admin-theme">
+  <div class="dashboard-shell">
+    <aside class="sidebar">
+      <div class="brand-link"><div class="logo-dot"></div><span>GigShield Admin</span></div>
+      <button class="nav-item active" data-tab="analytics">Analytics</button>
+      <button class="nav-item" data-tab="triggers">Trigger simulator</button>
+      <button class="nav-item danger" id="adminLogoutBtn">Logout</button>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <h1>Admin control center</h1>
+          <p>Manual trigger simulator, user growth, payout monitoring and BI snapshots.</p>
+        </div>
+      </header>
+
+      <section id="tab-analytics" class="tab-panel active">
+        <div class="stats-grid">
+          <div class="metric-card"><small>Total users</small><strong id="summaryUsers">0</strong></div>
+          <div class="metric-card"><small>Active policies</small><strong id="summaryPolicies">0</strong></div>
+          <div class="metric-card"><small>Total triggers</small><strong id="summaryTriggers">0</strong></div>
+          <div class="metric-card"><small>Total payout</small><strong id="summaryPayout">₹0</strong></div>
+        </div>
+
+        <div class="content-grid">
+          <div class="panel">
+            <div class="section-head"><h2>Platform mix</h2><p>How many linked profiles are active by platform.</p></div>
+            <div id="platformMix"></div>
+          </div>
+          <div class="panel">
+            <div class="section-head"><h2>Claims by trigger</h2><p>BI view of the disruption types driving payouts.</p></div>
+            <div id="triggerMix"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head"><h2>Users by city</h2><p>Distribution of enrolled workers.</p></div>
+          <div id="cityMix"></div>
+        </div>
+      </section>
+
+      <section id="tab-triggers" class="tab-panel">
+        <div class="content-grid">
+          <div class="panel">
+            <div class="section-head"><h2>Create a trigger manually</h2><p>For submission/demo purposes the admin can simulate live events manually.</p></div>
+            <form id="triggerForm" class="stack-form compact">
+              <select id="triggerType" required>
+                <option value="">Select trigger</option>
+                <option value="Heavy Rain">Heavy Rain</option>
+                <option value="Extreme Heat">Extreme Heat</option>
+                <option value="Severe Pollution">Severe Pollution</option>
+                <option value="Demand Collapse">Demand Collapse</option>
+                <option value="Platform Outage">Platform Outage</option>
+              </select>
+              <input type="text" id="triggerCity" placeholder="City" required>
+              <input type="text" id="triggerZone" placeholder="Zone" required>
+              <select id="triggerSeverity" required>
+                <option value="LOW">LOW</option>
+                <option value="MEDIUM">MEDIUM</option>
+                <option value="HIGH">HIGH</option>
+              </select>
+              <textarea id="triggerDescription" placeholder="Short description"></textarea>
+              <button type="submit" class="btn btn-primary">Create trigger & auto-process claims</button>
+            </form>
+            <p id="triggerMessage" class="form-message"></p>
+          </div>
+          <div class="panel">
+            <div class="section-head"><h2>Latest trigger results</h2><p>Workers protected by the last manual trigger.</p></div>
+            <div id="triggerResults"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/admin-dashboard.js"></script>
+</body>
+</html>
